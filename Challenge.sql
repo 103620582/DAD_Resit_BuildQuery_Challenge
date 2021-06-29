@@ -54,7 +54,7 @@ CREATE TABLE STUDENT(
 );
 
 CREATE TABLE TEACHER(
-    StaffID INT CHECK (StaffID IN (Len(8)))
+    StaffID INT 
 ,   Surname NVARCHAR(100) NOT NULL
 ,   GivenName NVARCHAR(100) NOT NULL
 ,   PRIMARY KEY (StaffID)
@@ -65,7 +65,7 @@ CREATE TABLE SUBJECTOFFERING(
 ,   Year INT CHECK (Year IN (Len(4)))
 ,   Semester INT CHECK (Semester IN (1, 2))
 ,   Fee MONEY NOT NULL CHECK (Fee > 0)
-,   StaffID INT CHECK (StaffID IN (Len(8)))
+,   StaffID INT 
 ,   PRIMARY KEY (SubjCode, Year, Semester)
 ,   FOREIGN KEY (SubjCode) REFERENCES SUBJECT (SubjCode)
 ,   FOREIGN KEY (StaffID) REFERENCES TEACHER (StaffID)
@@ -86,3 +86,41 @@ CREATE TABLE ENROLEMENT(
 
 SELECT *
 FROM INFORMATION_SCHEMA.TABLES
+
+SELECT *
+FROM STUDENT
+
+INSERT INTO SUBJECT (SubjCode, Description) VALUES ('ICTPRG418', 'Apply SQL to extract & manipulate data');
+INSERT INTO SUBJECT (SubjCode, Description) VALUES ('ICTBSB430', 'Create Basic Databases');
+INSERT INTO SUBJECT (SubjCode, Description) VALUES ('ICTDBS205', 'Design a Database');
+
+INSERT INTO STUDENT (StudentID, Surname, GivenName, Gender) VALUES ('S12233445', 'Baird', 'Tim', 'M');
+INSERT INTO STUDENT (StudentID, Surname, GivenName, Gender) VALUES ('s23344556', 'Nguyen', 'Anh', 'M');
+INSERT INTO STUDENT (StudentID, Surname, GivenName, Gender) VALUES ('s34455667', 'Hallinan', 'James', 'M');
+INSERT INTO STUDENT (StudentID, Surname, GivenName, Gender) VALUES ('s103620582', 'Ambrose', 'Joy', 'F');
+
+INSERT INTO TEACHER (StaffID, Surname, GivenName) VALUES (98776655,	'Young', 'Angus');
+INSERT INTO TEACHER (StaffID, Surname, GivenName) VALUES (87665544,	'Scott', 'Bon');
+INSERT INTO TEACHER (StaffID, Surname, GivenName) VALUES (76554433,	'Slade', 'Chris');
+
+INSERT INTO SUBJECTOFFERING (SubjCode, Year, Semester, Fee, StaffID) VALUES ('ICTPRG418', 2019, 1, 200, 98776655);
+INSERT INTO SUBJECTOFFERING (SubjCode, Year, Semester, Fee, StaffID) VALUES ('ICTPRG418', 2020, 1, 225, 98776655);
+INSERT INTO SUBJECTOFFERING (SubjCode, Year, Semester, Fee, StaffID) VALUES ('ICTBSB430',2020, 1, 200, 87665544);
+INSERT INTO SUBJECTOFFERING (SubjCode, Year, Semester, Fee, StaffID) VALUES ('ICTBSB430', 2020, 2, 200, 76554433);
+INSERT INTO SUBJECTOFFERING (SubjCode, Year, Semester, Fee, StaffID) VALUES ('ICTDBS205', 2019, 2, 225, 87665544);
+
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s12233445', 'ICTPRG418', 2019, 1, 'D', 20190225);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s12233445', 'ICTPRG418', 2019, 1, 'D', 20190225);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s23344556', 'ICTPRG418', 2019, 1, 'P', 20190215);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s23344556', 'ICTPRG418',	2020,	1,	'HD', 20200226);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s34455667', 'ICTPRG418',	2020,	1,	'P',	20200128);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s12233445', 'ICTBSB430', 2020,	1,	'C', 20200208);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s23344556', 'ICTBSB430',	2020,	2,	20200630);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s34455667', 'ICTBSB430',	2020,	2,	20200703);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s23344556', 'ICTDBS205',	2019,	2,	'P', 20190701);
+INSERT INTO ENROLEMENT (StudentID, SubjCode, Year, Semester, Grade, DateEnrolled) VALUES ('s34455667', 'ICTDBS205',	2019,	2,	'N', 20190713);
+
+
+
+
+
